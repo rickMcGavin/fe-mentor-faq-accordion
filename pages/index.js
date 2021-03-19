@@ -1,18 +1,48 @@
-import Head from 'next/head'
+import Head from "next/head";
+import BoxDesktop from '../src/svg/BoxDesktop';
+import SVGMobile from '../src/svg/SVGMobile';
+import { FAQS } from "../src/constants";
 
 export default function Home() {
   return (
-    <div>
+    <div className="App">
       <Head>
         <title>FAQ Accordion</title>
-        <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 
       <main>
-        <h1>
-          FAQ Accordion Card
-        </h1>
+        <div className="container">
+          <div className="card">
+            <div className="section image">
+              <div className="svg-mobile-container">
+                <SVGMobile />
+              </div>
+              <div className="section image-inner">
+                <BoxDesktop />
+              </div>
+            </div>
+            <div className="section faq">
+              <h1>FAQ</h1>
+              <div className="accordion">
+                {FAQS.map(({ question, answer, key }, i) => (
+                  <div className="accordion-item" key={key}>
+                    <input
+                      defaultChecked={i === 1}
+                      type="radio"
+                      id={key}
+                      name="faq"
+                      className="accordion-checkbox"
+                    />
+                    <label htmlFor={key} name="faq" className="question">{question}</label>
+                    <label htmlFor={key} name="faq" className="label" />
+                    <p className="answer">{answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
-  )
+  );
 }

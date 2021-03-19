@@ -1,9 +1,130 @@
+:root {
+  --primary-text-dark: hsl(238, 29%, 16%);
+  --primary-text-soft: hsl(14, 88%, 65%);
+  --primary-gradient-violet: hsl(273, 75%, 66%);
+  --primary-gradient-blue: hsl(240, 73%, 65%);
+  --neutral-text-gray: hsl(240, 6%, 50%);
+  --neutral-text-dark-gray: hsl(237, 12%, 33%);
+  --divider: hsl(240, 5%, 91%);
+  --white: hsl(0, 0%, 100%);
+  --ease: all 0.4s ease-in-out;
+}
+
+/* BEGIN RESET */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* END RESET */
+
 html,
 body {
+  background: linear-gradient(
+    to bottom,
+    var(--primary-gradient-violet),
+    var(--primary-gradient-blue)
+  );
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Kumbh Sans", sans-serif;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-text-dark);
+  line-height: 1;
+}
+
+p {
+  color: var(--neutral-text-gray);
+  font-size: 0.667rem;
+  line-height: 1.5;
+}
+
+#__next,
+.App,
+main {
+  height: 100%;
 }
 
 a {
@@ -11,6 +132,170 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 375px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.section {
+  flex: 1 1 50%;
+}
+
+.section h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section.image {
+  background-image: url("/bg-pattern-mobile.svg");
+  background-size: 235px 104px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 16px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.section.image-inner {
+  display: none;
+}
+
+.section.image .svg-box {
+  left: -93px;
+  position: absolute;
+  top: 42%;
+  z-index: 1;
+}
+
+.section.image .svg-mobile-container {
+  display: block;
+  margin-top: -121px;
+}
+
+.section.faq {
+  padding: 24px 24px 48px;
+}
+
+.accordion {
+  max-width: 352px;
+}
+
+.accordion-checkbox {
+  display: none;
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--divider);
+  padding: 16px 0;
+  position: relative;
+}
+
+.accordion .question {
+  color: var(--neutral-text-dark-gray);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: var(--ease);
+}
+
+.accordion .question:hover {
+  color: var(--primary-text-soft);
+}
+
+.accordion .label {
+  cursor: pointer;
+  display: block;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20width%3D%2210%22%20height%3D%227%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M1%20.799l4%204%204-4%22%20stroke%3D%22%23F47B56%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+  min-height: 7px;
+  height: 7px;
+  min-width: 10px;
+  width: 10px;
+  position: absolute;
+  top: 24px;
+  transition: var(--ease);
+  right: 10px;
+}
+
+.accordion .answer {
+  max-height: 0;
+  max-width: 90%;
+  overflow: hidden;
+  transition: var(--ease);
+}
+
+.accordion-checkbox:checked ~ .answer {
+  max-height: 100px;
+  margin-top: 16px;
+}
+
+.accordion-checkbox:checked ~ .label {
+  transform: rotate(0.5turn);
+}
+
+.accordion-checkbox:checked ~ .question {
+  color: var(--neutral-text-dark-gray);
+  cursor: default;
+  font-weight: 700;
+}
+
+@media (min-width: 996px) {
+  .container {
+    height: 510px;
+    max-width: 1020px;
+    padding: 0 50px;
+  }
+
+  .card {
+    flex-direction: row;
+  }
+
+  .section.image {
+    background-image: url("/bg-pattern-desktop.svg");
+    background-size: 197%;
+    background-position: left 118% top 72%;
+    height: 100%;
+    min-height: 453px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .section.image-inner {
+    background-image: url("/illustration-woman-online-desktop.svg");
+    background-size: 100%;
+    background-position: right 81px top 53%;
+    background-repeat: no-repeat;
+    display: block;
+    height: 100%;
+  }
+
+  .section.image .svg-mobile-container {
+    display: none;
+  }
+
+  .section.faq {
+    padding: 70px 16px 80px;
+  }
+
+  .section h1 {
+    margin-bottom: 36px;
+    text-align: left;
+  }
 }
