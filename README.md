@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/rickMcGavin/fe-mentor-faq-accordion](https://github.com/rickMcGavin/fe-mentor-faq-accordion)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://fe-mentor-faq-accordion.vercel.app/](https://fe-mentor-faq-accordion.vercel.app/)
 
 ## My process
 
